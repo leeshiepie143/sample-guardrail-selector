@@ -268,6 +268,11 @@ export class SampleGSStackOpenSearch extends Construct {
             index: false // Not filterable as per guidelines
           }
         }
+      },
+      settings: {
+        index: {
+          knn: true
+        }
       }
     });
     
