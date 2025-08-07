@@ -24,17 +24,18 @@ import { useTranslation } from 'react-i18next';
 function GuardrailDetailsDialog({ open, onClose, guardrail }) {
   const { t } = useTranslation();
   
-  if (!guardrail) return null;
-
   // Find the active version based on selectedVersion
   const activeVersion = useMemo(() => {
-    if (!guardrail.versions || guardrail.versions.length === 0) {
+    if (!guardrail || !guardrail.versions || guardrail.versions.length === 0) {
       return null;
     }
     
     const selectedVersion = guardrail.selectedVersion || 'DRAFT';
     return guardrail.versions.find(v => v.version === selectedVersion) || guardrail.versions[0];
   }, [guardrail]);
+
+  // Early return after all hooks have been called
+  if (!guardrail) return null;
 
   // Display version information if available
   const versionInfo = () => {

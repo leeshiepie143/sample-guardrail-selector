@@ -312,11 +312,9 @@ function AgentChat() {
         });
 
         // Set the selected guardrail to the current one with version
-        if (guardrailDetails.version && guardrailDetails.version !== 'DRAFT') {
-          setSelectedGuardrailId(`${guardrailDetails.guardrailId}:${guardrailDetails.version}`);
-        } else {
-          setSelectedGuardrailId(guardrailDetails.guardrailId);
-        }
+        // Always include the version suffix to match MenuItem values
+        const version = guardrailDetails.version || 'DRAFT';
+        setSelectedGuardrailId(`${guardrailDetails.guardrailId}:${version}`);
       } else {
         // No guardrail is applied
         setCurrentGuardrail(null);
@@ -524,7 +522,7 @@ function AgentChat() {
                   {guardrails.map((guardrail) => {
                     const items = [];
 
-                    // Add all non-DRAFT versions if available
+                    // Add all versions (including DRAFT) if available
                     if (guardrail.versions && guardrail.versions.length > 0) {
                       guardrail.versions.forEach((versionInfo) => {
                         items.push(
