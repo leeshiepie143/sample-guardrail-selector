@@ -39,6 +39,7 @@ const resources = {
       'chat.interface.SELECT_GUARDRAIL': 'Select Guardrail',
       'chat.interface.NONE': 'None',
       'chat.interface.NO_GUARDRAIL': 'None (No guardrail)',
+      'chat.interface.VIEW': 'View',
       'chat.interface.DETAILS': 'Details',
       'chat.interface.SOURCES': 'Sources',
       'chat.interface.KNOWLEDGE_BASE': 'Knowledge Base',
